@@ -37,7 +37,7 @@ test('3.Handling Prompt', async ({ page }) => {
   });
   
   await page.getByRole('button', { name: 'Click for JS Prompt' }).click();
-      //explicitly wait for a short duration to ensure the dialog is handled before proceeding with the next steps
+      //test 2:explicitly wait for a short duration to ensure the dialog is handled before proceeding with the next steps
     await page.waitForTimeout(2000); // Wait for 2 seconds to ensure the dialog is handled  
   await expect(page.getByText('You entered: Dhanya')).toBeVisible();
 });
