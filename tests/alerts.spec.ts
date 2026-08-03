@@ -18,15 +18,13 @@ test('2.Handling Prompt', async ({ page }) => {
  
   page.once('dialog', dialog => {
     dialog.accept();
-    //console.log(`Dialog message: ${dialog.message()}`);
-    //console.log(`Dialog type: ${dialog.type()}`);
-    expect(dialog.type()).toBe('confirm');
+      expect(dialog.type()).toBe('confirm');
     expect(dialog.message()).toBe('I am a JS Confirm');
+     expect(page.getByText('You clicked: Ok')).toBeVisible();
   });
   
   await page.getByRole('button', { name: 'Click for JS Confirm' }).click();
-  expect(page.getByText('You clicked: Ok')).toBeVisible();
-   // expect(page.$('text=You clicked: Ok')).toBeTruthy();
+
 });
 test('3.Handling Prompt', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/javascript_alerts');
@@ -36,11 +34,11 @@ test('3.Handling Prompt', async ({ page }) => {
     expect(dialog.message()).toBe('I am a JS prompt');
     
     await dialog.accept('Dhanya');
-    //explicitly wait for a short duration to ensure the dialog is handled before proceeding with the next steps
-    await page.waitForTimeout(2000); // Wait for 2 seconds to ensure the dialog is handled  
   });
   
   await page.getByRole('button', { name: 'Click for JS Prompt' }).click();
+      //explicitly wait for a short duration to ensure the dialog is handled before proceeding with the next steps
+    await page.waitForTimeout(2000); // Wait for 2 seconds to ensure the dialog is handled  
   await expect(page.getByText('You entered: Dhanya')).toBeVisible();
 });
 
