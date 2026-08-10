@@ -26,7 +26,7 @@ test('2.Handling Prompt', async ({ page }) => {
   await page.getByRole('button', { name: 'Click for JS Confirm' }).click();
 
 });
-test('3.Handling Prompt', async ({ page }) => {
+test('3.Handling Prompt with Input', async ({ page }) => {
   await page.goto('https://the-internet.herokuapp.com/javascript_alerts');
  
   page.once('dialog', async dialog => {
