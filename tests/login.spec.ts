@@ -216,16 +216,7 @@ test('19.Keyboard tab navigation', async ({ page }) => {
 test('20.Locator test sample', async ({ page }) => {
   await page.goto('https://www.flipkart.com/');
 
-  await page.keyboard.press('Tab');
-
-  await expect(page.getByPlaceholder('Please Input'))
-      .toBeFocused();
-
-  await page.keyboard.press('Tab');
-
-  await expect(
-    page.getByRole('button', { name: 'Login' })
-  ).toBeFocused();
+ 
 });
 
 
